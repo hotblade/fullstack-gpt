@@ -1,13 +1,13 @@
-from langchain.schema import SystemMessage
+from langchain_core.messages import SystemMessage
 import streamlit as st
 import os
 import requests
 from typing import Type
-from langchain.chat_models import ChatOpenAI
-from langchain.tools import BaseTool
+from langchain_community.chat_models import ChatOpenAI
+from langchain_core.tools import BaseTool
 from pydantic import BaseModel, Field
 from langchain.agents import initialize_agent, AgentType
-from langchain.utilities import DuckDuckGoSearchAPIWrapper
+from langchain_community.utilities import DuckDuckGoSearchAPIWrapper
 
 llm = ChatOpenAI(temperature=0.1, model_name="gpt-3.5-turbo-1106")
 

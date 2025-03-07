@@ -1,12 +1,18 @@
-from langchain.prompts import ChatPromptTemplate
-from langchain.document_loaders import UnstructuredFileLoader
-from langchain.embeddings import CacheBackedEmbeddings, OpenAIEmbeddings
-from langchain.schema.runnable import RunnableLambda, RunnablePassthrough
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_community.document_loaders import UnstructuredFileLoader
+from langchain.embeddings import CacheBackedEmbeddings 
+
+from langchain_community.embeddings import OpenAIEmbeddings
+
+
+from langchain_core.runnables import RunnableLambda
+
+from langchain_core.runnables import RunnablePassthrough
 from langchain.storage import LocalFileStore
-from langchain.text_splitter import CharacterTextSplitter
-from langchain.vectorstores.faiss import FAISS
-from langchain.chat_models import ChatOpenAI
-from langchain.callbacks.base import BaseCallbackHandler
+from langchain_text_splitters import CharacterTextSplitter
+from langchain_community.vectorstores import FAISS
+from langchain_community.chat_models import ChatOpenAI
+from langchain_core.callbacks import BaseCallbackHandler
 import streamlit as st
 
 st.set_page_config(
@@ -38,7 +44,7 @@ llm = ChatOpenAI(
 )
 
 
-@st.cache_data(show_spinner="Embedding file...")
+@st.cache_resource(show_spinner="Embedding file...")
 def embed_file(file):
     file_content = file.read()
     file_path = f"./.cache/files/{file.name}"

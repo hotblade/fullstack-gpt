@@ -6,13 +6,15 @@ from pydub import AudioSegment
 import glob
 import openai
 import os
-from langchain.chat_models import ChatOpenAI
-from langchain.prompts import ChatPromptTemplate
-from langchain.document_loaders import TextLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.schema import StrOutputParser
-from langchain.vectorstores.faiss import FAISS
-from langchain.embeddings import CacheBackedEmbeddings, OpenAIEmbeddings
+from langchain_community.chat_models import ChatOpenAI
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_community.document_loaders import TextLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_core.output_parsers import StrOutputParser
+from langchain_community.vectorstores import FAISS
+from langchain.embeddings import CacheBackedEmbeddings 
+
+from langchain_community.embeddings import OpenAIEmbeddings
 
 llm = ChatOpenAI(
     temperature=0.1,
